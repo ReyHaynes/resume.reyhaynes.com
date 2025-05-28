@@ -1,0 +1,13 @@
+{
+  "include": ["app/lib/theme-script.ts"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "none",
+    "outDir": "public",
+    "lib": ["dom", "es2015"],
+    "strict": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "sourceMap": false
+  }
+}

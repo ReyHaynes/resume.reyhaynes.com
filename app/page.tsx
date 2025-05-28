@@ -1,103 +1,148 @@
-import Image from "next/image";
+import { Timer, Users, Star, Trophy, UserRound, LayoutGrid, Rocket } from 'lucide-react';
+import Header from './components/Header';
+import Section from './components/Section';
+import ExperienceItem from './components/ExperienceItem';
+import Achievement from './components/Achievement';
+import Certification from './components/Certification';
+import Skills from './components/Skills';
+import resumeData from './data/resume.json';
+import type { ExperienceData, ResumeData } from './types/resume';
+
+function calculateYearsOfExperience(skill: string, experiences: ExperienceData[]): number {
+  let totalYears = 0;
+  const skillExperiences = experiences.filter(exp => 
+    exp.technologies.includes(skill) || exp.additionalSkills.includes(skill)
+  );
+
+  skillExperiences.forEach(exp => {
+    const startDate = new Date(exp.startDate);
+    const endDate = exp.endDate ? new Date(exp.endDate) : new Date(); // today's date
+    const years = (endDate.getFullYear() - startDate.getFullYear()) +
+                 (endDate.getMonth() - startDate.getMonth()) / 12;
+    totalYears += Math.max(0, Math.round(years * 10) / 10);
+  });
+
+  return Math.round(totalYears * 10) / 10;
+}
+
+function processSkillsWithYears(skills: string[], experiences: ExperienceData[], notableSkills: string[] = []) {
+  return skills
+    .map(skill => ({
+      name: skill,
+      years: calculateYearsOfExperience(skill, experiences),
+      isNotable: notableSkills.includes(skill)
+    }))
+    .sort((a, b) => b.years - a.years || a.name.localeCompare(b.name));
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const data = resumeData as ResumeData;
+  
+  // Extract and calculate years for technologies and skills
+  const allTechnologies = Array.from(new Set(
+    data.experience.flatMap(exp => exp.technologies)
+  ));
+  
+  const allAdditionalSkills = Array.from(new Set(
+    data.experience.flatMap(exp => exp.additionalSkills)
+  ));
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const technologiesWithYears = processSkillsWithYears(
+    allTechnologies, 
+    data.experience,
+    data.topTechnologySkills.otherNotables
+  );
+  
+  const additionalSkillsWithYears = processSkillsWithYears(
+    allAdditionalSkills, 
+    data.experience,
+    data.topAdditionalSkills.otherNotables
+  );
+
+  const iconMap = {
+    Timer,
+    Users,
+    Star,
+    Trophy,
+    UserRound,
+    LayoutGrid,
+    Rocket
+  };
+
+  return (
+    <div className="min-h-screen print:bg-white print:py-0 print:!w-4xl print:!m-0 print:!p-0">
+      <div className="a4-page p-0">
+        <div className="flex flex-col md:flex-row">
+          {/* Main content */}
+          <div className="flex-1">
+            <Header {...data.header} />
+
+            <Section title="SUMMARY">
+              <p className="px-8" style={{ color: 'var(--text-secondary)' }}>
+                {data.summary}
+              </p>
+            </Section>
+
+            <Section title="EXPERIENCE">
+              {data.experience.map((exp, index) => (
+                <ExperienceItem
+                  key={index}
+                  {...exp}
+                  startDate={exp.startDate.replace(/(\d{4})-(\d{2})/, '$2/$1')}
+                  endDate={exp.endDate ? exp.endDate.replace(/(\d{4})-(\d{2})/, '$2/$1') : undefined}
+                />
+              ))}
+            </Section>
+          </div>
+
+          {/* Sidebar with white background */}
+          <div
+            className="xl:w-lg lg:w-md md:w-sm print:bg-white print:!w-80 pt-8"
+            style={{ backgroundColor: 'var(--sidebar-bg)' }}>
+            <Section title="ACHIEVEMENTS">
+              {data.achievements.map((achievement, index) => (
+                <Achievement
+                  key={index}
+                  Icon={iconMap[achievement.icon]}
+                  title={achievement.title}
+                  description={achievement.description}
+                />
+              ))}
+            </Section>
+
+            <Section
+              title="SKILLS"
+              subContent={"Sorted by Professional years of experience, with notable skills highlighted."}>
+              <Skills 
+                groups={[
+                  {
+                    title: "Stack Expertise",
+                    skills: technologiesWithYears
+                  },
+                  {
+                    title: "Core Professional Skills",
+                    skills: additionalSkillsWithYears
+                  }
+                ]}
+              />
+            </Section>
+
+            { data.certifications.length > 0 &&
+              <Section title="CERTIFICATION">
+                <div className="space-y-4">
+                  {data.certifications.map((cert, index) => (
+                    <Certification
+                      key={index}
+                      title={cert.title}
+                      description={cert.description}
+                    />
+                  ))}
+                </div>
+              </Section>
+            }
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }

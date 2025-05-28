@@ -1,0 +1,180 @@
+{
+  "header": {
+    "name": "Reinaldo Haynes",
+    "title": "Staff Software Engineer",
+    "email": "rey.haynes [at] me.com",
+    "linkedin": "https://linkedin.com/in/reyhaynes",
+    "location": "Philadelphia, PA"
+  },
+  "summary": "Staff-level Frontend Engineer with 13+ years of experience delivering scalable, high-performance applications across FinTech, Crypto, and EdTech. Expert in React, TypeScript, and modern architecture with deep experience in design systems, real-time UIs, and mobile-first products. Proven mentor and technical leader, known for guiding teams, launching end-to-end products, and improving developer velocity at scale.",
+  "experience": [
+    {
+      "title": "Senior Frontend Developer",
+      "company": "Hazel Health",
+      "location": "Remote (San Francisco, CA)",
+      "startDate": "2023-05",
+      "endDate": "2025-01",
+      "logo": "/hazelhealth_logo.jpeg",
+      "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "React", "Next.js", "Swift", "Figma", "Storybook", "Python", "PostgreSQL", "Cypress", "Jest", "AWS"],
+      "additionalSkills": ["Team Leadership", "Project Leadership", "Mobile Development", "Performance Optimization", "Testing Strategy", "CI/CD Improvements", "Microservices", "Cloud Infrastructure"],
+      "points": [
+        "Led the rebuild of District Landing Pages to enable non-devs to manage content.",
+        "Developed Hazel's video/screenshare platform, replacing third-party tools.",
+        "Contributed critical fixes to apps used by 1M+ students across 225+ districts.",
+        "Improved CI/CD with GitHub Actions, onboarding scripts, and PR templates.",
+        "Mentored 4 engineers and introduced a new review process for frontend teams."
+      ]
+    },
+    {
+      "title": "Technical Lead / Staff Frontend Engineer",
+      "company": "Blockchain.com",
+      "location": "Remote (London, UK)",
+      "startDate": "2022-11",
+      "endDate": "2023-03",
+      "logo": "/blockchain_logo.jpeg",
+      "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "React", "Next.js", "Redux", "Figma", "Storybook", "WebSockets", "GraphQL", "Python", "PostgreSQL", "Redis", "Jest", "Cypress", "AWS"],
+      "additionalSkills": ["Team Leadership", "Project Leadership", "Performance Optimization", "Testing Strategy", "High-Traffic Site Management", "UX/UI Development", "Web3 / Blockchain", "Microservices", "Cloud Infrastructure"],
+      "points": [
+        "Led UI for order book, trade tickets, and live account updates.",
+        "Tuned WebSocket data to balance performance with real-time UX.",
+        "Worked daily with backend teams and weekly with design for product alignment.",
+        "Built Storybook components and improved Redux state handling.",
+        "Mentored 4 devs and guided architecture decisions on high-traffic systems."
+      ]
+    },
+    {
+      "title": "Senior Frontend Engineer",
+      "company": "Dapper Labs",
+      "location": "Remote (Vancouver, BC)",
+      "startDate": "2022-01",
+      "endDate": "2022-11",
+      "logo": "/dapper_labs_logo.jpeg",
+      "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "React", "Next.js", "GraphQL", "XState", "Flow Blockchain", "Cadence", "Storybook", "Jest", "Cypress", "AWS"],
+      "additionalSkills": ["Microservices", "Performance Optimization", "UX/UI Development", "Web3 / Blockchain", "Smart Contracts", "Cloud Infrastructure"],
+      "points": [
+        "Built the Marketplace, NFT Collection, and Trade Flow for NFL All Day.",
+        "Integrated Flow blockchain for live NFT state and trading validation.",
+        "Managed complex state logic with XState and blockchain event handling.",
+        "Handled high concurrency traffic during major NFL NFT releases.",
+        "Collaborated in a small, senior team to deliver a top-tier Web3 launch."
+      ]
+    },
+    {
+      "title": "Senior Frontend Developer",
+      "company": "Vanguard",
+      "location": "Remote (Philadelphia, PA)",
+      "startDate": "2020-03",
+      "endDate": "2022-01",
+      "logo": "/vanguard_logo.jpeg",
+      "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "Angular", "RxJS", "Redux", "GraphQL", "Storybook", "Node.js", "Jasmine", "Cypress", "Java", "PostgreSQL", "Redis", "AWS"],
+      "additionalSkills": ["Project Leadership", "Microservices", "Legacy Migration", "Testing Strategy", "UX/UI Development"],
+      "points": [
+        "Owned the core trade path during the shift from monolith to microservices.",
+        "Redesigned trading ticket to streamline user flow and boost completion rate.",
+        "Worked with 9+ teams to coordinate architecture and API alignment.",
+        "Achieved 100% accessibility and near-total test coverage on all modules.",
+        "Mentored 3 junior developers and improved cross-team component sharing."
+      ]
+    },
+    {
+      "title": "Founder, Developer, Educator",
+      "company": "Selfvestor, LLC (formerly Trade With Rey)",
+      "location": "Philadelphia, PA",
+      "startDate": "2019-10",
+      "endDate": "2020-06",
+      "technologies": ["JavaScript", "TypeScript", "React", "React Native", "Next.js", "MongoDB", "PostgreSQL", "Swift", "Kotlin", "Firebase", "Stripe", "Figma", "Premiere Pro", "Photoshop"],
+      "additionalSkills": ["Team Leadership", "Project Leadership", "Course Development", "Content Creation", "Finance Education", "Mobile Development"],
+      "points": [
+        "Built and launched a mobile-first financial education app using Firebase and Stripe.",
+        "Created all video, visual, and course content with custom backend and UI design.",
+        "Reached 3,000+ users, 200k+ views, and maintained a 4.6+ app store rating.",
+        "Worked with external editors and a Kotlin engineer to speed delivery and solve edge cases.",
+        "Shipped a full MVP in 6 months, combining engineering, UX, and product growth."
+      ]
+    },
+    {
+      "title": "Technical Lead / Staff Frontend Engineer",
+      "company": "Hedgeable / Hydrogen",
+      "location": "New York, NY",
+      "startDate": "2017-10",
+      "endDate": "2019-11",
+      "logo": "/hydrogenplatform_logo.jpeg",
+      "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "React", "React Native", "Redux", "AngularJS", "Solidity", "Ethereum", "Node.js", "Java", "WebSockets", "MySQL"],
+      "additionalSkills": ["Team Leadership", "Project Leadership", "Mobile Development", "UX/UI Development", "Web3 / Blockchain", "Smart Contracts", "Legacy Migration"],
+      "points": [
+        "Led frontend development of Hydro, a blockchain-based 2FA identity app.",
+        "Integrated Ethereum smart contracts and light wallets using Trust Wallet.",
+        "Built secure login flows and decentralized auth across mobile devices.",
+        "Managed frontend team and worked closely with 6 backend devs and 2 designers.",
+        "Achieved 30k+ downloads and Product Hunt recognition, contributing to $50M+ market cap."
+      ]
+    },
+    {
+      "title": "Front-End Software Developer (R&D Lead)",
+      "company": "Complex Media",
+      "location": "New York, NY",
+      "startDate": "2010-09",
+      "endDate": "2016-07",
+      "logo": "/complex_ntwrk_logo.jpeg",
+      "technologies": ["JavaScript", "HTML/CSS", "React", "AngularJS", "Node.js", "jQuery", "PHP", "Python", "ThreeJS", "WebGL", "MySQL", "Redis", "ActionScript"],
+      "additionalSkills": ["Team Leadership", "Project Leadership", "UX/UI Development", "Performance Optimization", "High-Traffic Site Management", "Animation"],
+      "points": [
+        "Promoted from intern to R&D lead, focused on enhancing UX and screen time.",
+        "Invented and owned Digital Cover Stories, leading design-to-dev for 2+ years.",
+        "Built a custom CMS to allow non-devs to create parallax SPA stories.",
+        "Introduced React and Node.js to modernize frontend stack company-wide.",
+        "Led a team of 3 devs and partnered closely with designers and editorial."
+      ]
+    }
+  ],
+  "topTechnologySkills": {
+    "baseYears": 10,
+    "standouts": [
+      "React",
+      "TypeScript",
+      "WebSockets",
+      "Next.js",
+      "Storybook"
+    ],
+    "otherNotables": [
+      "Redux",
+      "GraphQL",
+      "Node.js",
+      "Python",
+      "PostgreSQL"
+    ]
+  },
+  "topAdditionalSkills": {
+    "baseYears": 5,
+    "standouts": [
+      "Team Leadership",
+      "Performance Optimization",
+      "Testing Strategy"
+    ],
+    "otherNotables": [
+      "Project Leadership",
+      "Microservices",
+      "Mobile Development",
+      "Web3 / Blockchain",
+      "UX/UI Development"
+    ]
+  },
+  "achievements": [
+    {
+      "icon": "UserRound",
+      "title": "A True Mentor",
+      "description": "Mentored 15+ engineers, improved team onboarding, and introduced review workflows to boost delivery speed and code quality."
+    },
+    {
+      "icon": "Rocket",
+      "title": "The Product Launcher",
+      "description": "Led the architecture and release of full-stack products from concept to launch, including frontend, backend, and integration work."
+    },
+    {
+      "icon": "LayoutGrid",
+      "title": "Integrated System Designer",
+      "description": "Built reusable component libraries and design systems used across multiple teams to ensure visual consistency and faster development."
+    }
+  ],
+  "certifications": []
+}

@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base colors */
+  --background: theme(colors.neutral.100);
+  --foreground: theme(colors.neutral.950);
+  --experience-item-alt-bg: theme(colors.neutral.200);
+  --progress-bar-bg: theme(colors.neutral.400);
+  
+  /* Text colors */
+  --text-primary: theme(colors.neutral.900);
+  --text-secondary: theme(colors.gray.800);
+  --text-tertiary: theme(colors.gray.950);
+  
+  /* Accent colors */
+  --accent-primary: theme(colors.blue.600);
+  --accent-secondary: theme(colors.blue.400);
+  
+  /* Sidebar colors */
+  --sidebar-bg: theme(colors.neutral.200);
+  --sidebar-text-primary: theme(colors.gray.900);
+  --sidebar-text-secondary: theme(colors.gray.700);
+  --sidebar-accent: var(--accent-secondary);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[class~="dark"] {
+  /* Base colors */
+  --background: theme(colors.neutral.900);
+  --foreground: theme(colors.gray.50);
+  --experience-item-alt-bg: theme(colors.neutral.800);
+  --progress-bar-bg: theme(colors.neutral.700);
+  
+  /* Text colors */
+  --text-primary: theme(colors.gray.100);
+  --text-secondary: theme(colors.gray.200);
+  --text-tertiary: theme(colors.gray.300);
+  
+  /* Accent colors */
+  --accent-primary: theme(colors.blue.400);
+  
+  /* Sidebar colors */
+  --sidebar-bg: theme(colors.black);
+  --sidebar-text-primary: theme(colors.gray.100);
+  --sidebar-text-secondary: theme(colors.gray.300);
+  --sidebar-accent: var(--accent-secondary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Add transition properties */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add transitions to common elements */
+p, h1, h2, h3, h4, h5, h6, div {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+@media print {
+  :root {
+    /* Override colors for printing with darker blacks */
+    --text-primary: theme(colors.neutral.950) !important;
+    --text-secondary: theme(colors.neutral.800) !important;
+    --text-tertiary: theme(colors.neutral.700) !important;
+    
+    /* Override sidebar colors */
+    --sidebar-text-primary: theme(colors.neutral.950) !important;
+    --sidebar-text-secondary: theme(colors.neutral.800) !important;
+    --accent-primary: theme(colors.neutral.950) !important;
+    --sidebar-accent: theme(colors.neutral.950) !important;
+    
+    /* Ensure white background */
+    --background: theme(colors.white) !important;
+    --sidebar-bg: theme(colors.white) !important;
+  }
+
+  /* Reduce font sizes to 70% for print */
+  h1 {
+    font-size: 1.575rem !important; /* 70% of 2.25rem (text-4xl) */
+  }
+  h2 {
+    font-size: 1.05rem !important; /* 70% of 1.5rem (text-2xl) */
+  }
+  h3 {
+    font-size: 0.788rem !important; /* 70% of 1.125rem (text-lg) */
+  }
+  p, li {
+    font-size: 0.7rem !important; /* 70% of 1rem (text-base) */
+  }
+  .text-sm {
+    font-size: 0.613rem !important; /* 70% of 0.875rem */
+  }
+
+  /* Experience item technologies and skills */
+  .experience-metadata {
+    font-size: 0.7rem !important; /* 70% of 1rem */
+  }
 }
