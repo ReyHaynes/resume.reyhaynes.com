@@ -1,4 +1,4 @@
-import { Mail, Linkedin, MapPin } from 'lucide-react';
+import { Mail, Linkedin, MapPin, Github } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
@@ -14,7 +14,19 @@ export default function Header({ name, title, email, location, linkedin }: Heade
     <header className="px-8 py-6">
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>{name}</h1>
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <a 
+            href="https://github.com/ReyHaynes/resume.reyhaynes.com"
+            className="p-2 rounded hover:bg-black/[.05] transition-colors print:hidden"
+            style={{ color: 'var(--text-primary)' }}
+            title="View source code on GitHub"
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <Github className="w-5 h-5" />
+          </a>
+          <ThemeToggle />
+        </div>
       </div>
       <h2 className="text-xl mb-4" style={{ color: 'var(--text-secondary)' }}>{title}</h2>
       <div className="flex flex-wrap gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
