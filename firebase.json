@@ -2,7 +2,6 @@
   "hosting": {
     "public": "out",
     "target": "resume",
-    "site": "resume-reyhaynes-com",
     "ignore": [
       "firebase.json",
       "**/.*",
