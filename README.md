@@ -12,6 +12,18 @@ A modern, interactive resume website built with Next.js, featuring a clean desig
 - **Performance Focused**: Optimized loading and rendering
 - **Accessibility**: Proper semantic HTML and ARIA labels
 - **Skills Visualization**: Visual progress bars showing years of experience
+- **Optional Analytics**: Privacy-focused Firebase Analytics for engagement insights
+
+## 📸 Screenshots
+
+### Light Mode
+![Resume - Light Mode](https://github.com/ReyHaynes/resume.reyhaynes.com/blob/main/screenshots/screenshot-light_mode.jpg)
+
+### Dark Mode  
+![Resume - Dark Mode](https://github.com/ReyHaynes/resume.reyhaynes.com/blob/main/screenshots/screenshot-dark_mode.jpg)
+
+### Print Layout
+![Resume - Print Layout](https://github.com/ReyHaynes/resume.reyhaynes.com/blob/main/screenshots/screenshot-print.jpg)
 
 ## 🚀 Tech Stack
 
@@ -134,6 +146,10 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
 - **Page Views**: Basic page visit tracking
 - **Engagement Time**: Time spent on page (only meaningful engagement >10s)
 - **Scroll Milestones**: Progress at 25%, 50%, 75%, and 100% scroll depth
+- **Performance Metrics**: Page load times and rendering performance
+- **Device Context**: Viewport size, device type, and screen resolution
+- **Session Information**: Visit patterns and return visitor tracking
+- **Exit Intent**: Potential exit behavior for engagement insights
 
 ### Privacy Notes
 

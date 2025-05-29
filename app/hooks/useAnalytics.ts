@@ -1,12 +1,30 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackPageView, trackPageEngagement, trackScrollMilestone } from '../lib/analytics';
+import { 
+  trackPageView, 
+  trackPageEngagement, 
+  trackScrollMilestone,
+  trackPagePerformance,
+  trackDeviceContext,
+  trackSessionInfo,
+  initializeExitIntentTracking
+} from '../lib/analytics';
 
 export const useBasicAnalytics = () => {
   useEffect(() => {
     // Track page view on mount
     trackPageView();
+    
+    // Track performance metrics
+    trackPagePerformance();
+    
+    // Track device and session context
+    trackDeviceContext();
+    trackSessionInfo();
+    
+    // Initialize exit intent tracking
+    const exitIntentCleanup = initializeExitIntentTracking();
 
     const startTime = Date.now();
     const scrollThresholds = new Set<number>();
@@ -36,6 +54,11 @@ export const useBasicAnalytics = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('beforeunload', handleBeforeUnload);
+      
+      // Clean up exit intent tracking
+      if (exitIntentCleanup) {
+        exitIntentCleanup();
+      }
       
       // Track engagement time on cleanup
       const timeSpent = Math.floor((Date.now() - startTime) / 1000);
