@@ -69,6 +69,8 @@ Edit the resume content in `app/data/resume.json`:
     "name": "Your Name",
     "title": "Your Title",
     "email": "your.email@example.com",
+    "website": "https://yourwebsite.com",
+    "websiteLabel": "yourwebsite.com",
     "linkedin": "https://linkedin.com/in/yourprofile",
     "location": "Your Location"
   },
@@ -96,6 +98,50 @@ Place company logos in the `public/` directory and reference them in the resume 
 }
 ```
 
+## 📊 Optional: Firebase Analytics
+
+This project includes optional, privacy-focused Firebase Analytics integration for basic page tracking.
+
+### Features
+
+- **Minimal Tracking**: Only essential page views, engagement time, and scroll milestones
+- **Privacy-Focused**: No intrusive tracking or personal data collection
+- **Optional**: App works perfectly without analytics configured
+- **Lightweight**: Minimal performance impact
+
+### Setup (Optional)
+
+1. Create a Firebase project at [Firebase Console](https://firebase.google.com/)
+2. Enable Analytics in your Firebase project
+3. Copy `.env.local.example` to `.env.local`:
+```bash
+cp .env.local.example .env.local
+```
+
+4. Add your Firebase configuration to `.env.local`:
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key_here
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+### What's Tracked
+
+- **Page Views**: Basic page visit tracking
+- **Engagement Time**: Time spent on page (only meaningful engagement >10s)
+- **Scroll Milestones**: Progress at 25%, 50%, 75%, and 100% scroll depth
+
+### Privacy Notes
+
+- No personal information is collected
+- All tracking is anonymous and aggregated
+- Easy to disable by removing environment variables
+- Fully compliant with privacy best practices
+
 ## 🛠️ Scripts
 
 - `npm run dev` - Start development server with Turbopack
@@ -118,15 +164,21 @@ Place company logos in the `public/` directory and reference them in the resume 
 │   ├── data/
 │   │   └── resume.json      # Resume content data
 │   ├── hooks/
-│   │   └── useTheme.ts      # Theme management hook
+│   │   ├── useTheme.ts      # Theme management hook
+│   │   └── useAnalytics.ts  # Analytics tracking hook (optional)
 │   ├── lib/
-│   │   └── theme-script.ts  # Client-side theme script
+│   │   ├── theme-script.ts  # Client-side theme script
+│   │   ├── firebase.ts      # Firebase configuration (optional)
+│   │   └── analytics.ts     # Analytics functions (optional)
+│   ├── providers/
+│   │   └── FirebaseProvider.tsx # Firebase provider (optional)
 │   ├── types/
 │   │   └── resume.ts        # TypeScript types
 │   ├── globals.css          # Global styles and CSS variables
 │   ├── layout.tsx           # Root layout
 │   └── page.tsx             # Main page component
-├── public/                  # Static assets
+├── public/                  # Static assets and company logos
+├── .env.local.example       # Environment variables template
 ├── next.config.ts           # Next.js configuration
 └── package.json
 ```

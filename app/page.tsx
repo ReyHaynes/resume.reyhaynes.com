@@ -1,3 +1,5 @@
+'use client';
+
 import { Timer, Users, Star, Trophy, UserRound, LayoutGrid, Rocket } from 'lucide-react';
 import Header from './components/Header';
 import Section from './components/Section';
@@ -7,6 +9,7 @@ import Certification from './components/Certification';
 import Skills from './components/Skills';
 import resumeData from './data/resume.json';
 import type { ExperienceData, ResumeData } from './types/resume';
+import { useBasicAnalytics } from './hooks/useAnalytics';
 
 function calculateYearsOfExperience(skill: string, experiences: ExperienceData[]): number {
   let totalYears = 0;
@@ -36,6 +39,9 @@ function processSkillsWithYears(skills: string[], experiences: ExperienceData[],
 }
 
 export default function Home() {
+  // Initialize basic analytics tracking
+  useBasicAnalytics();
+  
   const data = resumeData as ResumeData;
   
   // Extract and calculate years for technologies and skills
