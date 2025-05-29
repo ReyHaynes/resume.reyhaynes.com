@@ -1,5 +1,12 @@
 {
   "projects": {
     "default": "com-reyhaynes"
+  },
+  "targets": {
+    "com-reyhaynes": {
+      "hosting": {
+        "resume": ["resume-reyhaynes-com"]
+      }
+    }
   }
 }
