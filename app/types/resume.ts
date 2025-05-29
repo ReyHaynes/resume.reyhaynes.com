@@ -2,6 +2,8 @@ export interface HeaderData {
   name: string;
   title: string;
   email: string;
+  website: string;
+  websiteLabel: string;
   linkedin: string;
   location: string;
 }

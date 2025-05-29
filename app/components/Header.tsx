@@ -1,15 +1,17 @@
-import { Mail, Linkedin, MapPin, Github } from 'lucide-react';
+import { Mail, Linkedin, MapPin, Github, Globe } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   name: string;
   title: string;
   email: string;
+  website: string;
+  websiteLabel: string;
   location: string;
   linkedin: string;
 }
 
-export default function Header({ name, title, email, location, linkedin }: HeaderProps) {
+export default function Header({ name, title, email, website, websiteLabel, location, linkedin }: HeaderProps) {
   return (
     <header className="px-8 py-6">
       <div className="flex justify-between items-center mb-2">
@@ -34,6 +36,13 @@ export default function Header({ name, title, email, location, linkedin }: Heade
           <Mail size={16} />
           {email}
         </span>
+        <a href={website}
+          className="flex items-center gap-1 transition-colors hover:opacity-80"
+          style={{ color: 'var(--accent-primary)' }}
+          target="_blank" rel="noopener noreferrer">
+          <Globe size={16} />
+          {websiteLabel}
+        </a>
         <a href={linkedin}
           className="flex items-center gap-1 transition-colors hover:opacity-80"
           style={{ color: 'var(--accent-primary)' }}
