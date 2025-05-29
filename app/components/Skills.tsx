@@ -39,7 +39,7 @@ export default function Skills({ groups }: SkillsProps) {
           }));
         
         return (
-          <div key={index} className="break-inside-avoid not-first:mt-8 not-first:print:pt-4">
+          <div key={index} className="break-inside-avoid not-first:mt-8 first:pt-4 not-first:print:pt-4">
             <h3 
               className="font-semibold mb-4"
               style={{ color: 'var(--sidebar-text-primary)' }}
