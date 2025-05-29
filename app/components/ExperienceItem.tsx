@@ -46,7 +46,7 @@ export default function ExperienceItem({
 
   return (
     <div className="py-4 px-8 first:pt-0 even:bg-[var(--experience-item-alt-bg)] transition-colors break-inside-avoid">
-      <div className="flex justify-between items-start mb-4">
+      <div className="flex justify-between items-start mb-4 print:mb-2.5">
         <div className="flex gap-4 items-center">
           {logo && (
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">

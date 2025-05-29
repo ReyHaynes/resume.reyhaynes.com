@@ -6,7 +6,7 @@ interface SectionProps {
 
 export default function Section({ title, subContent, children }: SectionProps) {
   return (
-    <section className="mb-6">
+    <section className="mb-6 print:mb-4">
       <h2 
         className="text-2xl font-bold px-8 py-1.5"
         style={{ color: 'var(--accent-primary)' }}
@@ -20,7 +20,7 @@ export default function Section({ title, subContent, children }: SectionProps) {
           {subContent}
         </small>
       }
-      <div className="mt-4">{children}</div>
+      <div className="mt-4 print:mt-1.5">{children}</div>
     </section>
   );
 }
