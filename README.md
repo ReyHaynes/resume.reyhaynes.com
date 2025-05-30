@@ -1,16 +1,17 @@
 # Resume Portfolio - Reinaldo Haynes
 
-A modern, interactive resume website built with Next.js, featuring a clean design, dark/light theme toggle, and optimized for both web viewing and printing.
+A file-driven, modern, ATS-friendly resume website built with Next.js, featuring a clean design, dark/light theme toggle, and optimized for both web viewing and printing.
+
+Use `/app/data/resume.json` to modify the resume data. Target the job you want dynamically.
 
 ## 🌟 Features
 
 - **Responsive Design**: Mobile-first approach that looks great on all devices
 - **Dark/Light Theme**: Toggle between themes with system preference detection
 - **Print Optimized**: Clean print layout with proper page breaks and styling
-- **Interactive Elements**: Hover effects and smooth transitions
 - **Static Export**: Builds to static files for easy deployment
-- **Performance Focused**: Optimized loading and rendering
-- **Accessibility**: Proper semantic HTML and ARIA labels
+- **Performance Focused**: Optimized loading and rendering; SEO-friendly
+- **Accessibility**: Proper semantic HTML, ARIA labels, and screen-reader ready
 - **Skills Visualization**: Visual progress bars showing years of experience
 - **Optional Analytics**: Privacy-focused Firebase Analytics for engagement insights
 
@@ -260,5 +261,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - GitHub: [@ReyHaynes](https://github.com/ReyHaynes)
 
 ---
+
+💚 Made with love...because I hate updating PDFs and Word documents!
 
 ⭐ Star this repository if you found it helpful!

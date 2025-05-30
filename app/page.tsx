@@ -7,9 +7,12 @@ import ExperienceItem from './components/ExperienceItem';
 import Achievement from './components/Achievement';
 import Certification from './components/Certification';
 import Skills from './components/Skills';
+import SkipLink from './components/SkipLink';
 import resumeData from './data/resume.json';
 import type { ExperienceData, ResumeData } from './types/resume';
 import { useBasicAnalytics } from './hooks/useAnalytics';
+import { useAccessibility, useFocusManagement, useReducedMotion } from './hooks/useAccessibility';
+import React from 'react';
 
 function calculateYearsOfExperience(skill: string, experiences: ExperienceData[]): number {
   let totalYears = 0;
@@ -39,10 +42,21 @@ function processSkillsWithYears(skills: string[], experiences: ExperienceData[],
 }
 
 export default function Home() {
-  // Initialize basic analytics tracking
+  // Initialize analytics and accessibility features
   useBasicAnalytics();
+  const { announce } = useAccessibility();
+  useFocusManagement();
+  useReducedMotion();
   
   const data = resumeData as ResumeData;
+  
+  // Announce page load for screen readers
+  React.useEffect(() => {
+    announce({ 
+      message: `${data.header.name}'s resume loaded. Use Alt+M to jump to main content or Alt+S for sidebar.`,
+      priority: 'polite' 
+    });
+  }, [announce, data.header.name]);
   
   // Extract and calculate years for technologies and skills
   const allTechnologies = Array.from(new Set(
@@ -77,10 +91,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen print:bg-white print:py-0 print:!w-4xl print:!m-0 print:!p-0">
+      {/* Skip Navigation Links */}
+      <SkipLink href="#main-content">Skip to main content</SkipLink>
+      <SkipLink href="#sidebar-content">Skip to sidebar</SkipLink>
+      
       <div className="a4-page p-0">
         <div className="flex flex-col md:flex-row">
           {/* Main content */}
-          <div className="flex-1">
+          <main id="main-content" className="flex-1" role="main" aria-label="Resume main content">
             <Header {...data.header} />
 
             <Section title="SUMMARY">
@@ -99,12 +117,16 @@ export default function Home() {
                 />
               ))}
             </Section>
-          </div>
+          </main>
 
           {/* Sidebar with white background */}
-          <div
+          <aside
+            id="sidebar-content"
             className="xl:w-lg lg:w-md md:w-sm print:bg-white print:!w-80 pt-8"
-            style={{ backgroundColor: 'var(--sidebar-bg)' }}>
+            style={{ backgroundColor: 'var(--sidebar-bg)' }}
+            role="complementary"
+            aria-label="Additional information and skills"
+          >
             <Section title="ACHIEVEMENTS">
               {data.achievements.map((achievement, index) => (
                 <Achievement
@@ -146,7 +168,7 @@ export default function Home() {
                 </div>
               </Section>
             }
-          </div>
+          </aside>
         </div>
       </div>
     </div>

@@ -10,9 +10,21 @@ import {
   trackSessionInfo,
   initializeExitIntentTracking
 } from '../lib/analytics';
+import { useAccessibility, useFocusManagement, useReducedMotion } from './useAccessibility';
 
 export const useBasicAnalytics = () => {
+  // Initialize accessibility features
+  const { announce } = useAccessibility();
+  useFocusManagement();
+  useReducedMotion();
+
   useEffect(() => {
+    // Announce page load for screen readers
+    announce({ 
+      message: 'Resume page loaded. Use Alt+M to jump to main content or Alt+S for sidebar.',
+      priority: 'polite' 
+    });
+
     // Track page view on mount
     trackPageView();
     
@@ -37,6 +49,13 @@ export const useBasicAnalytics = () => {
       if (milestone >= 25 && !scrollThresholds.has(milestone)) {
         scrollThresholds.add(milestone);
         trackScrollMilestone(milestone);
+        
+        // Announce scroll milestones for screen readers (less frequently)
+        if (milestone === 50) {
+          announce({ message: 'Halfway through the resume' });
+        } else if (milestone === 100) {
+          announce({ message: 'Reached the end of the resume' });
+        }
       }
     };
 
@@ -64,5 +83,5 @@ export const useBasicAnalytics = () => {
       const timeSpent = Math.floor((Date.now() - startTime) / 1000);
       trackPageEngagement(timeSpent);
     };
-  }, []);
+  }, [announce]);
 };

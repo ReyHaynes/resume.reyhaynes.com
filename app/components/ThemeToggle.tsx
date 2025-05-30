@@ -29,6 +29,13 @@ export default function ThemeToggle() {
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(newTheme);
     
+    // Announce theme change for screen readers
+    const announcement = `Switched to ${newTheme} theme`;
+    const liveRegion = document.getElementById('aria-live-polite');
+    if (liveRegion) {
+      liveRegion.textContent = announcement;
+    }
+    
     // Reset changing state after transition
     setTimeout(() => setIsChanging(false), 300);
   };
@@ -43,15 +50,20 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       disabled={isChanging}
-      className="p-2 rounded hover:bg-black/[.05] transition-colors cursor-pointer disabled:cursor-not-allowed print:hidden"
+      className="p-2 rounded hover:bg-black/[.05] transition-colors cursor-pointer disabled:cursor-not-allowed print:hidden focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      aria-pressed={theme === 'dark'}
       style={{ color: 'var(--text-primary)' }}
     >
       {theme === 'dark' ? (
-        <Sun className="w-5 h-5" />
+        <Sun className="w-5 h-5" aria-hidden="true" />
       ) : (
-        <Moon className="w-5 h-5" />
+        <Moon className="w-5 h-5" aria-hidden="true" />
       )}
+      <span className="sr-only">
+        {theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      </span>
     </button>
   );
 }

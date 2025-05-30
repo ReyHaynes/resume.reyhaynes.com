@@ -10,9 +10,11 @@ interface StandoutSkillsProps {
 
 export default function StandoutSkills({ skills }: StandoutSkillsProps) {
   return (
-    <div className="space-y-2 mb-8">
+    <div className="space-y-2 mb-8" role="group" aria-label="Standout skills with experience visualization">
       {skills.map((skill) => {
         const progress = Math.min(100, (skill.years / skill.baseYears) * 100);
+        const isExceeding = skill.years >= skill.baseYears;
+        
         return (
           <div key={skill.name}>
             <div className="flex justify-between print:text-[12px]">
@@ -23,7 +25,7 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
             <div className="flex items-center gap-1 h-2.5 mb-5 print:hidden">
               <div className="flex-grow">
                 {/* Year markers */}
-                <div className="relative h-3 mb-1">
+                <div className="relative h-3 mb-1" aria-hidden="true">
                   {Array.from({ length: skill.baseYears + 1 }).map((_, i) => (
                     <div
                       key={i}
@@ -40,6 +42,11 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
                 <div 
                   className="h-2.5 rounded-full print:h-1.5"
                   style={{ backgroundColor: 'var(--progress-bar-bg)' }}
+                  role="progressbar"
+                  aria-valuenow={Math.min(skill.years, skill.baseYears)}
+                  aria-valuemin={0}
+                  aria-valuemax={skill.baseYears}
+                  aria-label={`${skill.name}: ${skill.years} years of experience out of ${skill.baseYears} base years`}
                 >
                   <div 
                     className="h-full rounded-full"
@@ -51,8 +58,10 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
                 </div>
               </div>
               <span 
-                className={`text-xl font-bold pl-2 print:hidden ${skill.years < skill.baseYears ? 'invisible' : ''}`}
+                className={`text-xl font-bold pl-2 print:hidden ${!isExceeding ? 'invisible' : ''}`}
                 style={{ color: 'var(--accent-primary)' }}
+                aria-label={isExceeding ? `Exceeds base experience of ${skill.baseYears} years` : ''}
+                role={isExceeding ? 'img' : 'presentation'}
               >
                 +
               </span>
