@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import metadataData from "./data/metadata.json";
 import FirebaseProvider from "./providers/FirebaseProvider";
+import type { SiteMetadataData } from "./types/metadata";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,70 +16,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const { metadataBase, ...metadataValues } = metadataData as SiteMetadataData;
+
 export const metadata: Metadata = {
-  title: "Reinaldo Haynes – Engineering Manager",
-  description: "Engineering Manager with 13+ years building products in fintech, digital media, and health tech. Manages teams of up to 11 engineers and brings a staff-level frontend background.",
-  keywords: [
-    "Reinaldo Haynes",
-    "Rey Haynes",
-    "Engineering Manager",
-    "Engineering Leader",
-    "People Management",
-    "Team Leadership",
-    "Capacity Planning",
-    "Staff Frontend Engineer",
-    "Senior Frontend Engineer",
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "Next.js",
-    "Fintech",
-    "Digital Media",
-    "Health Tech",
-    "Frontend Architecture",
-    "Atlanta GA",
-    "Resume",
-    "Portfolio"
-  ],
-  authors: [{ name: "Reinaldo Haynes", url: "https://reyhaynes.com" }],
-  creator: "Reinaldo Haynes",
-  metadataBase: new URL("https://resume.reyhaynes.com"),
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://resume.reyhaynes.com",
-    title: "Reinaldo Haynes – Engineering Manager",
-    description: "Engineering Manager with 13+ years building products in fintech, digital media, and health tech. Manages teams of up to 11 engineers and brings a staff-level frontend background.",
-    siteName: "Reinaldo Haynes Resume",
-    images: [
-      {
-        url: "https://reyhaynes.com/logo-large-social.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Reinaldo Haynes - Engineering Manager",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Reinaldo Haynes – Engineering Manager",
-    description: "Engineering Manager with 13+ years building products in fintech, digital media, and health tech. Manages teams of up to 11 engineers and brings a staff-level frontend background.",
-    images: ["https://reyhaynes.com/logo-large-social.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  ...metadataValues,
+  metadataBase: new URL(metadataBase),
 };
 
 export default function RootLayout({
