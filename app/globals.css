@@ -129,16 +129,23 @@ button:focus {
 }
 
 @media print {
-  :root {
+  :root,
+  :root[class~="dark"] {
+    color-scheme: light !important;
+
     /* Override colors for printing with darker blacks */
+    --foreground: theme(colors.neutral.950) !important;
     --text-primary: theme(colors.neutral.950) !important;
     --text-secondary: theme(colors.neutral.800) !important;
     --text-tertiary: theme(colors.neutral.700) !important;
+    --experience-item-alt-bg: theme(colors.neutral.200) !important;
+    --progress-bar-bg: theme(colors.neutral.400) !important;
     
     /* Override sidebar colors */
     --sidebar-text-primary: theme(colors.neutral.950) !important;
     --sidebar-text-secondary: theme(colors.neutral.800) !important;
     --accent-primary: theme(colors.neutral.950) !important;
+    --accent-secondary: theme(colors.neutral.950) !important;
     --sidebar-accent: theme(colors.neutral.950) !important;
     
     /* Ensure white background */
@@ -146,18 +153,35 @@ button:focus {
     --sidebar-bg: theme(colors.white) !important;
   }
 
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
   /* Reduce font sizes to 80% for print */
-  h1 {
+  body,
+  p,
+  li,
+  time,
+  .text-base,
+  .text-md {
+    font-size: 0.8rem !important; /* 80% of 1rem (text-base) */
+  }
+  h1,
+  .text-4xl {
     font-size: 1.8rem !important; /* 80% of 2.25rem (text-4xl) */
   }
-  h2 {
+  h2,
+  .text-2xl {
     font-size: 1.2rem !important; /* 80% of 1.5rem (text-2xl) */
   }
-  h3 {
-    font-size: 0.9rem !important; /* 80% of 1.125rem (text-lg) */
+  .text-xl {
+    font-size: 1rem !important; /* 80% of 1.25rem (text-xl) */
   }
-  p, li {
-    font-size: 0.8rem !important; /* 80% of 1rem (text-base) */
+  h3,
+  .text-lg {
+    font-size: 0.9rem !important; /* 80% of 1.125rem (text-lg) */
   }
   .text-sm {
     font-size: 0.7rem !important; /* 80% of 0.875rem */
