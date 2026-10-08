@@ -74,7 +74,11 @@ export default function Skills({ groups }: SkillsProps) {
                   role="listitem"
                 >
                   <span className="font-medium">{skill.name}</span>
-                  <span className="whitespace-nowrap text-sm" aria-label={`${skill.years} years of experience`}>
+                  <span
+                    className="whitespace-nowrap text-sm"
+                    aria-label={`${skill.years} years of experience`}
+                    suppressHydrationWarning
+                  >
                     {' '}({skill.years} {skill.years === 1 ? 'yr' : 'yrs'})
                   </span>
                 </p>

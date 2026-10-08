@@ -18,7 +18,10 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
         return (
           <div key={skill.name}>
             <div className="flex justify-between print:text-[12px]">
-              <span style={{ color: 'var(--sidebar-text-secondary)' }}>
+              <span
+                style={{ color: 'var(--sidebar-text-secondary)' }}
+                suppressHydrationWarning
+              >
                 {skill.name} ({skill.years} {skill.years === 1 ? 'yr' : 'yrs'})
               </span>
             </div>
@@ -47,6 +50,7 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
                   aria-valuemin={0}
                   aria-valuemax={skill.baseYears}
                   aria-label={`${skill.name}: ${skill.years} years of experience out of ${skill.baseYears} base years`}
+                  suppressHydrationWarning
                 >
                   <div 
                     className="h-full rounded-full"
@@ -54,6 +58,7 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
                       width: `${progress}%`,
                       backgroundColor: 'var(--accent-primary)'
                     }}
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -62,6 +67,7 @@ export default function StandoutSkills({ skills }: StandoutSkillsProps) {
                 style={{ color: 'var(--accent-primary)' }}
                 aria-label={isExceeding ? `Exceeds base experience of ${skill.baseYears} years` : ''}
                 role={isExceeding ? 'img' : 'presentation'}
+                suppressHydrationWarning
               >
                 +
               </span>
