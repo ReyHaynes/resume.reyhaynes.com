@@ -19,11 +19,11 @@
       "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "Jest", "AWS", "Stripe", "PostgreSQL", "Java"],
       "additionalSkills": ["Team Leadership", "Project Leadership", "People Management", "Capacity Planning", "CI/CD Improvements", "UX/UI Development", "Cloud Infrastructure"],
       "points": [
-        "Lead 11 acquisition engineers across subscription growth, partnering with Product, Design, and QA.",
-        "Own paywall tests and subscription flows across registration, login, payments, and video.",
-        "Build quarterly capacity plans and flag scope gaps, dependencies, and priority tradeoffs.",
-        "Built a custom capacity model that mapped team availability to quarterly project priorities.",
-        "Coach engineers through one-on-ones, refinement sessions, and retrospectives."
+        "Lead an 11-engineer development team, partnering with Product, Design, and QA.",
+        "Own paywall and subscription flows across registration, login, payments, and video.",
+        "Build quarterly capacity plans, coordinate with dependencies, and manage priority.",
+        "Built a custom capacity model mapping team availability to project priorities.",
+        "Coach engineers through one-on-ones, refinement sessions, and retros."
       ]
     },
     {
