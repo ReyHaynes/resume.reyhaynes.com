@@ -140,7 +140,7 @@ export default function Home() {
 
             <Section
               title="SKILLS"
-              subContent={"Sorted by Professional years of experience, with notable skills highlighted."}>
+              subContent={"Sorted by years of professional experience, with notable skills highlighted."}>
               <Skills 
                 groups={[
                   {
