@@ -8,6 +8,10 @@ export interface HeaderData {
   location: string;
 }
 
+export interface ExperiencePrintOptions {
+  hideMetadata?: boolean;
+}
+
 export interface ExperienceData {
   title: string;
   company: string;
@@ -18,6 +22,7 @@ export interface ExperienceData {
   additionalSkills: string[];
   points: string[];
   logo?: string; // Optional path to company logo image in public folder
+  print?: ExperiencePrintOptions;
 }
 
 export interface AchievementData {

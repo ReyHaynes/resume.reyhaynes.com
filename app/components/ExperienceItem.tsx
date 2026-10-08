@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import resumeData from '../data/resume.json';
+import type { ExperiencePrintOptions } from '../types/resume';
 
 interface ExperienceItemProps {
   title: string;
@@ -11,6 +12,7 @@ interface ExperienceItemProps {
   technologies?: string[];
   additionalSkills?: string[];
   logo?: string; // Path to the company logo in public folder
+  print?: ExperiencePrintOptions;
 }
 
 export default function ExperienceItem({ 
@@ -22,7 +24,8 @@ export default function ExperienceItem({
   points,
   technologies,
   additionalSkills,
-  logo
+  logo,
+  print
 }: ExperienceItemProps) {
   const notableTechs = new Set([
     ...resumeData.topTechnologySkills.standouts,
@@ -50,7 +53,7 @@ export default function ExperienceItem({
   );
 
   return (
-    <article className="py-4 px-8 first:pt-0 even:bg-[var(--experience-item-alt-bg)] transition-colors break-inside-avoid">
+    <article className={`py-4 px-8 first:pt-0 even:bg-[var(--experience-item-alt-bg)] transition-colors break-inside-avoid ${print?.hideMetadata ? 'print-hide-experience-metadata' : ''}`}>
       <header className="flex justify-between items-start mb-4 print:mb-2.5">
         <div className="flex gap-4 items-center">
           {logo && (

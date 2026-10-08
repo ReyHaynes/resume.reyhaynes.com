@@ -95,6 +95,7 @@
       "location": "Philadelphia, PA",
       "startDate": "2019-10",
       "endDate": "2020-06",
+      "print": { "hideMetadata": true },
       "technologies": ["JavaScript", "TypeScript", "React", "React Native", "Next.js", "MongoDB", "PostgreSQL", "Swift", "Kotlin", "Firebase", "Stripe", "Figma", "Premiere Pro", "Photoshop"],
       "additionalSkills": ["Project Leadership", "Course Development", "Content Creation", "Finance Education", "Mobile Development"],
       "points": [
@@ -110,6 +111,7 @@
       "startDate": "2017-10",
       "endDate": "2019-11",
       "logo": "/hydrogenplatform_logo.jpeg",
+      "print": { "hideMetadata": true },
       "technologies": ["JavaScript", "TypeScript", "HTML/CSS", "React", "React Native", "Redux", "AngularJS", "Solidity", "Ethereum", "Node.js", "Java", "WebSockets", "MySQL"],
       "additionalSkills": ["Team Leadership", "Project Leadership", "People Management", "Mobile Development", "UX/UI Development", "Web3 / Blockchain", "Smart Contracts", "Legacy Migration"],
       "points": [
@@ -126,6 +128,7 @@
       "startDate": "2010-09",
       "endDate": "2016-07",
       "logo": "/complex_ntwrk_logo.jpeg",
+      "print": { "hideMetadata": true },
       "technologies": ["JavaScript", "HTML/CSS", "React", "AngularJS", "Node.js", "jQuery", "PHP", "Python", "ThreeJS", "WebGL", "MySQL", "Redis", "ActionScript"],
       "additionalSkills": ["Team Leadership", "Project Leadership", "UX/UI Development", "Performance Optimization", "High-Traffic Site Management", "Animation"],
       "points": [

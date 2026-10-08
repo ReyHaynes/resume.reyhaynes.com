@@ -191,4 +191,8 @@ button:focus {
   .experience-metadata {
     font-size: 0.8rem !important; /* 80% of 1rem */
   }
+
+  .print-hide-experience-metadata .experience-metadata {
+    display: none !important;
+  }
 }
