@@ -184,7 +184,7 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-XXXXXXXXXX
 │   │   ├── useTheme.ts      # Theme management hook
 │   │   └── useAnalytics.ts  # Analytics tracking hook (optional)
 │   ├── lib/
-│   │   ├── theme-script.ts  # Client-side theme script
+│   │   ├── theme-script.ts  # Pre-paint theme initializer
 │   │   ├── firebase.ts      # Firebase configuration (optional)
 │   │   └── analytics.ts     # Analytics functions (optional)
 │   ├── providers/

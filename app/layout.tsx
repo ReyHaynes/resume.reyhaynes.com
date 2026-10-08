@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import metadataData from "./data/metadata.json";
+import { themeInitializerScript } from "./lib/theme-script";
 import FirebaseProvider from "./providers/FirebaseProvider";
 import type { SiteMetadataData } from "./types/metadata";
 import "./globals.css";
@@ -33,10 +33,9 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover" />
-        <Script
+        <script
           id="theme-script"
-          strategy="beforeInteractive"
-          src="/theme-script.js"
+          dangerouslySetInnerHTML={{ __html: themeInitializerScript }}
         />
       </head>
       <body

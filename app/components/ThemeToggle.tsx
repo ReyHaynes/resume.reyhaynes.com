@@ -2,16 +2,22 @@
 
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import type { Theme } from '../lib/theme-script';
+
+function applyTheme(theme: Theme) {
+  document.documentElement.classList.remove('light', 'dark');
+  document.documentElement.classList.add(theme);
+  document.documentElement.style.colorScheme = theme;
+}
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<Theme>('light');
   const [isChanging, setIsChanging] = useState(false);
 
   useEffect(() => {
-    // Get initial theme
-    const savedTheme = localStorage.getItem('theme')?.trim().toLowerCase() as 'light' | 'dark' || 'light';
-    setTheme(savedTheme);
+    const initialTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    setTheme(initialTheme);
     setMounted(true);
   }, []);
 
@@ -21,13 +27,14 @@ export default function ThemeToggle() {
     setIsChanging(true);
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     
-    // Update state and localStorage
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update HTML class
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(newTheme);
+    applyTheme(newTheme);
+
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch {
+      // The theme still applies for this session when storage is unavailable.
+    }
     
     // Announce theme change for screen readers
     const announcement = `Switched to ${newTheme} theme`;
