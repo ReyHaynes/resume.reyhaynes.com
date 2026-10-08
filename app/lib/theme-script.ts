@@ -1,11 +1,13 @@
 export type Theme = 'light' | 'dark';
 
+export const THEME_STORAGE_KEY = 'theme';
+
 export const themeInitializerScript = `
 (function () {
   var storedTheme = null;
 
   try {
-    storedTheme = window.localStorage.getItem('theme');
+    storedTheme = window.localStorage.getItem('${THEME_STORAGE_KEY}');
     storedTheme = storedTheme ? storedTheme.trim().toLowerCase() : null;
   } catch (_) {}
 

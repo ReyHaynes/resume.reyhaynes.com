@@ -2,12 +2,27 @@
 
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import type { Theme } from '../lib/theme-script';
+import { THEME_STORAGE_KEY, type Theme } from '../lib/theme-script';
 
 function applyTheme(theme: Theme) {
   document.documentElement.classList.remove('light', 'dark');
   document.documentElement.classList.add(theme);
   document.documentElement.style.colorScheme = theme;
+}
+
+function getStoredTheme(): Theme | null {
+  try {
+    const storedTheme = localStorage
+      .getItem(THEME_STORAGE_KEY)
+      ?.trim()
+      .toLowerCase();
+
+    return storedTheme === 'light' || storedTheme === 'dark'
+      ? storedTheme
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 export default function ThemeToggle() {
@@ -16,7 +31,11 @@ export default function ThemeToggle() {
   const [isChanging, setIsChanging] = useState(false);
 
   useEffect(() => {
-    const initialTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const initialTheme =
+      getStoredTheme() ??
+      (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+
+    applyTheme(initialTheme);
     setTheme(initialTheme);
     setMounted(true);
   }, []);
@@ -31,7 +50,7 @@ export default function ThemeToggle() {
     applyTheme(newTheme);
 
     try {
-      localStorage.setItem('theme', newTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
     } catch {
       // The theme still applies for this session when storage is unavailable.
     }
