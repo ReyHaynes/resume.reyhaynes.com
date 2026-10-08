@@ -77,7 +77,6 @@ export default function Skills({ groups }: SkillsProps) {
                   <span
                     className="whitespace-nowrap text-sm"
                     aria-label={`${skill.years} years of experience`}
-                    suppressHydrationWarning
                   >
                     {' '}({skill.years} {skill.years === 1 ? 'yr' : 'yrs'})
                   </span>
